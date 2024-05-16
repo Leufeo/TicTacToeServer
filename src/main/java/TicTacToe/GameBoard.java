@@ -1,6 +1,7 @@
 package TicTacToe;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -9,6 +10,18 @@ public class GameBoard {
     int row=3, col=3;
     Character[][] state = new Character[row][col];
 
+    public List<Character> getState()
+    {
+        List<Character> currentState = new ArrayList<>(9);
+        for (int rowIndex = 0; rowIndex<3; rowIndex++)
+        {
+            for (int colIndex = 0; colIndex<3; colIndex++)
+            {
+                currentState.add(state[rowIndex][colIndex]);
+            }
+        }
+        return currentState;
+    }
     public void rowsAndCols(){
         System.out.println("How many rows do you wish to play with? ");
         row = Integer.parseInt(playerInput.nextLine());

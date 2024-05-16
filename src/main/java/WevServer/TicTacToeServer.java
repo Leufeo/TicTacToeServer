@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 @RestController
 @RequestMapping("/tictactoe")
@@ -17,8 +18,9 @@ public class TicTacToeServer {
     }
 
     @PostMapping("move")
-    public void placeMove(@RequestBody TicTacToeMove moveRequest)
+    public List<Character> placeMove(@RequestBody TicTacToeMove moveRequest)
     {
         gameBoard.placeMove(moveRequest.getPosition(), moveRequest.sign);
+        return gameBoard.getState();
     }
 }
