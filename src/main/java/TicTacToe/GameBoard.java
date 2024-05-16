@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class GameBoard {
     Scanner playerInput = new Scanner(System.in);
     int row=3, col=3;
-    Character[][] state;
+    Character[][] state = new Character[row][col];
 
     public void rowsAndCols(){
         System.out.println("How many rows do you wish to play with? ");
@@ -89,15 +89,15 @@ public class GameBoard {
         boolean movePlaced = false;
         while (!movePlaced)
         {
-            movePlaced = placeMove(rowNum(playerInput), colNum(playerInput), player.symbol);
+            movePlaced = placeMove(playerInput, player.symbol);
         }
 
         requestInputMove(player);
     }
-    public boolean placeMove(int row, int col, char symbol) {
-        if (state[row][col] == null)
+    public boolean placeMove(int playerInput, char symbol) {
+        if (state[rowNum(playerInput)][colNum(playerInput)] == null)
         {
-            state[row][col] = symbol;
+            state[rowNum(playerInput)][colNum(playerInput)] = symbol;
             return true;
         }
         return false;
