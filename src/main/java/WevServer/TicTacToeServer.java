@@ -17,6 +17,16 @@ public class TicTacToeServer {
         return Files.readString(Path.of("src/main/resources/tic.html"));
     }
 
+    @GetMapping("board")
+    public List<Character> getBoardState() {
+        return gameBoard.getState();
+    }
+
+    @GetMapping("winner")
+    public Character getWinner() {
+        return gameBoard.finished();
+    }
+
     @PostMapping("move")
     public List<Character> placeMove(@RequestBody TicTacToeMove moveRequest)
     {
