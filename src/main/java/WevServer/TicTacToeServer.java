@@ -23,8 +23,15 @@ public class TicTacToeServer {
     }
 
     @GetMapping("winner")
-    public Character getWinner() {
-        return gameBoard.finished();
+    public String getWinner() {
+        Character winner = gameBoard.finished();
+        if(winner != null){
+        gameBoard = new GameBoard();
+        }
+        if(winner == null){
+            winner = ' ';
+        }
+        return winner.toString();
     }
 
     @PostMapping("move")
